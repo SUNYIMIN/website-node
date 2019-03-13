@@ -7,10 +7,9 @@ let init = async () => {
     const urlList = JSON.parse(data).data.list;
     urlList.length = 1;
     axios.post('http://127.0.0.1:5000/urldata', {
-      source: 'test',
       urlList
     }).then((res) => {
-      console.log('res', res);
+      console.log('res', res.data.code);
     }).catch((err) => {
       console.log('err', err);
     })

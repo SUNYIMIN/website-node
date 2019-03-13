@@ -10,6 +10,19 @@ function readFile(path){
     })
   })
 }
+
+function writeFile(path, data) {
+   return new Promise((resolve, reject) => {
+    fs.writeFile(path, data, (err, data) => {
+       if(err) {
+         reject(false)
+       } else {
+         resolve(true)
+       }
+    })
+   })
+}
 module.exports = {
-  readFile
+  readFile,
+  writeFile
 }
