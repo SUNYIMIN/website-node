@@ -1,0 +1,27 @@
+{
+  "name": "website-node",
+  "description": "一个基于node的网站截图服务",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SUNYIMIN/website-node.git"
+  },
+  "author": "sky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SUNYIMIN/website-node/issues"
+  },
+  "homepage": "https://github.com/SUNYIMIN/website-node#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-loggers": "^0.6.0",
+    "koa-router": "^7.4.0"
+  }
+}
