@@ -2,6 +2,7 @@ const Router = require('koa-router');
 const path = require('path');
 const router = new Router();
 const { writeFile } = require('../util/fs.js');
+const { browser } = require('../src/index.js'); 
 
 router.post('/urldata', async (ctx, next) => {
    let {
@@ -20,7 +21,18 @@ router.post('/urldata', async (ctx, next) => {
   let iswrite = await writeFile(filePath, JSON.stringify(urlList));
   try {
     if(iswrite) {
-      
+      ctx.body = {
+        code: "200",
+        dec: "备份数据成功"
+      } 
+      setTimeout(async () => {
+        //开始截图
+        // 3 打开浏览器里的3个tab
+        let screenImg = await browser(urlList, 3);
+        console.log('img', screenImg);
+        let endTime = +new Date();
+        global.Log.info('截图时间', (endTime - startTime) / 1000 + '秒');
+      }, 100)
     } else {
       ctx.body = {
         code: "403",
