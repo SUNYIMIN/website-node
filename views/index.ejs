@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ejs</title>
+</head>
+<body>
+  <ul>
+    <%for(var i=0;i<message.length;i++) { %>
+      <li><%=message[i].title %></li>
+      <%}%>
+  </ul>
+
+   <!-- ejs 的模版语法，读取变量 message | 是从 render 传递过来 -->
+
+</body>
+</html>

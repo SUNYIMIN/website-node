@@ -19,10 +19,12 @@
   "homepage": "https://github.com/SUNYIMIN/website-node#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "ejs": "^2.6.1",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-loggers": "^0.6.0",
     "koa-router": "^7.4.0",
+    "koa-views": "^6.1.5",
     "puppeteer": "^1.13.0"
   }
 }

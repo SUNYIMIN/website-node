@@ -1,22 +1,60 @@
 const puppeteer = require('puppeteer');
-let browser = (urlList, tabNum) => {
+const url = 'https://movie.douban.com/tv/#!type=tv&tag=%E7%BB%BC%E8%89%BA&sort=recommend&page_limit=20&page_start=0';
+let sleep = (time) => {
     return new Promise((resolve, reject) => {
-      console.log('开始截图')
-       //执行浏览器的脚本
-       let action = async () => {
-           //打开浏览器
-           let runbrowser = await puppeteer.launch({
-            headless: false
-           })
-           //打开一个新的tab页
-           let page = await runbrowser.newPage();
-           await page.goto('http://yun.dui88.com//tuia/landPage/5127/5127_2018-05-04_11_15_24.jpeg');
-           await resolve(page.screenshot({path: 'example.png'}));
-       }
-       action();
-    }); 
+        setTimeout(resolve, time)
+ })
 }
-
+let browser = async () => {
+    console.log(666);
+    // return new Promise((resolve, reject) => {
+        console.log('start view brower page');
+        //运行浏览器
+        const browser = await puppeteer.launch({
+            args: ['--no-sandbox'],
+            dumpio: false
+        })
+    
+        //打开新的tab
+        const page = await browser.newPage();
+    
+        //输入地址 等待页面完全加载
+        await page.goto(url, {
+            waitUntil: "networkidle2"
+        })
+    
+        await sleep(3000)
+    
+        await page.waitForSelector('.more');
+    
+        for(var i = 0;i < 1; i++) {
+           await sleep(3000);
+           await page.click('.more');
+        }
+        const result = await page.evaluate(() => {
+            let $ = window.$;
+            let items = $('.list a')
+            let list = [];
+            if(items.length > 1) {
+               items.each((index, item) => {
+                  let it = $(item);
+                  let imgUrl = it.find('img').attr('src');
+                  let title = it.find('p').text();
+                  let score = it.find('strong').text();
+                  list.push({
+                   imgUrl,
+                   title,
+                   score
+                  })
+               })
+            }
+            return list
+        })
+         return result;
+     //   console.log('result', result);
+    }
+    // )    
+// }
 
 
 
