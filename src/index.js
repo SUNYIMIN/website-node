@@ -6,8 +6,6 @@ let sleep = (time) => {
  })
 }
 let browser = async () => {
-    console.log(666);
-    // return new Promise((resolve, reject) => {
         console.log('start view brower page');
         //运行浏览器
         const browser = await puppeteer.launch({
@@ -51,11 +49,7 @@ let browser = async () => {
             return list
         })
          return result;
-     //   console.log('result', result);
     }
-    // )    
-// }
-
 
 
 module.exports = {
