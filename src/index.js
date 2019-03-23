@@ -48,8 +48,10 @@ let browser = async () => {
             }
             return list
         })
-         return result;
-    }
+        await browser.close();
+        return result;   
+     
+         }
 
 
 module.exports = {
